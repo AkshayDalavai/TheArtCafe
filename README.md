@@ -19,6 +19,5 @@ Android v
 SpringBoot v
 
 # Project Setup
-cd TheArtCafe/frontend
-cd TheArtCafe/backend
-
+`cd TheArtCafe/frontend` to learn how to setup the Android application for the project <br>
+`cd TheArtCafe/backend` to learn how to setup the Spring boot for the project 

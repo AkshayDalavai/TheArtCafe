@@ -19,5 +19,5 @@ Android v <br>
 SpringBoot v
 
 # Project Setup
-`cd TheArtCafe/artcafe` to learn how to setup the Android application for the project <br>
+`cd TheArtCafe/ArtCafe` to learn how to setup the Android application for the project <br>
 `cd TheArtCafe/theartcafebackend` to learn how to setup the Spring boot for the project 

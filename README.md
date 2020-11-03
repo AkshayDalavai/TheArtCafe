@@ -3,7 +3,7 @@
 # Introduction
 The Art Cafe App lets you shop handmade goods straight from your Android app. Whether it’s big or small our app provides products such as handmade goods, vintage goods, creative goods and custom goods. This would give an opportunity to young artists to make their crafts available to the rest of the world
 
-# FEATURES AND FUNCTIONALITY
+# Features and functionalities
 1)	Provide a visually appealing product gallery, intuitive, user friendly, minimalistic UI design and secure platform for artists to sell 
 2)	Provide in-app marketing videos of a particular product.
 3)	Save your favorite items such as crafts and paintings so it will be easy for users to discover more of they want later. 

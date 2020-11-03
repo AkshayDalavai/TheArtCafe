@@ -11,11 +11,11 @@ The Art Cafe App lets you shop handmade goods straight from your Android app. Wh
 5)	Easy to buy the crafts swiftly and securely using our full suite of payment options.
 
 # Technology Stack
-Frontend -> E-Commerce Android application
+Frontend -> E-Commerce Android application <br>
 Backend -> Reactive RESTful Web Service for e-commerce application using Spring Boot and MongoDB
 
 # Version
-Android v
+Android v <br>
 SpringBoot v
 
 # Project Setup

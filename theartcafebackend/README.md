@@ -37,7 +37,7 @@ The following items should be installed in your system:<br>
     ```
 2. Inside IntelliJ
     ```$xslt
-    File -> Open and select theartcafebackend pom.xml. Click on Open button
+    File -> Open and select theartcafebackend `pom.xml`. Click on Open button -> Open as Project
     ```
 3. A run configuration named `TheArtCafeBackendApplication` should have been created for you if you're using a recent 
 Ultimate version. Otherwise, run the application by right clicking on the `TheArtCafeBackendApplication` main class and 

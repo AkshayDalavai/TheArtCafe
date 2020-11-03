@@ -1,8 +1,7 @@
 # <h1 align="center">TheArtCafe Backend</h1>
 
 # Running TheArtCafeBackend Locally
-TheArtCafebackend is a [Spring Boot](https://spring.io/projects/spring-boot) application built using [Maven] 
-(https://maven.apache.org/). 
+TheArtCafebackend is a [Spring Boot](https://spring.io/projects/spring-boot) application built using [Maven](https://maven.apache.org/). 
 You can build a jar file and run it from the command line:
 ```$xslt
  git clone https://github.com/AkshayDalavai/TheArtCafe.git

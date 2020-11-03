@@ -21,6 +21,7 @@ compile as well - most people use an IDE for this):
 
 # Running TheArtCafeBackend using IDE
 **Prerequisites** <br>
+
 The following items should be installed in your system:<br>
 
 1. Java 8 or newer.

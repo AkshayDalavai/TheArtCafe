@@ -1,5 +1,4 @@
-# TheArtCafe
-
+<h1 align="center">TheArtCafe</h1>
 
 # Introduction
 The Art Cafe App lets you shop handmade goods straight from your Android app. Whether it’s big or small our app provides products such as handmade goods, vintage goods, creative goods and custom goods. This would give an opportunity to young artists to make their crafts available to the rest of the world

@@ -15,9 +15,9 @@ Frontend -> E-Commerce Android application <br>
 Backend -> Reactive RESTful Web Service for e-commerce application using Spring Boot and MongoDB
 
 # Version
-Android v <br>
-SpringBoot v
+Android v10.0 <br>
+SpringBoot v2.2.6
 
 # Project Setup
-`cd TheArtCafe/frontend` to learn how to setup the Android application for the project <br>
-`cd TheArtCafe/backend` to learn how to setup the Spring boot for the project 
+`cd TheArtCafe/ArtCafe` to learn how to setup the Android application for the project <br>
+`cd TheArtCafe/theartcafebackend` to learn how to setup the Spring boot for the project 

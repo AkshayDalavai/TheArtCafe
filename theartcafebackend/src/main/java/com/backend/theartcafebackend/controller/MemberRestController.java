@@ -5,6 +5,7 @@ import com.backend.theartcafebackend.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
@@ -23,4 +24,7 @@ public class MemberRestController {
     public Mono<Member> createUser(@RequestBody Member member){
         return memberService.createUser(member);
     }
+
+    @GetMapping(value = "/getAllUsers", produces = "application/json")
+    public Flux<Member> getAllUsers(){return memberService.findAllUsers();}
 }

@@ -3,7 +3,9 @@
 package com.backend.theartcafebackend.entity;
 
 import com.backend.theartcafebackend.data.AccountStatus;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
 
 public class Account {
 
@@ -12,14 +14,14 @@ public class Account {
     private AccountStatus status;
     private String firstName;
     private String lastName;
-    private Address shippingAddress;
+    private List<Address> shippingAddress;
     private String email;
     private String phone;
 
     public Account() {
     }
 
-    public Account(String userName, String password, AccountStatus status, String firstName, String lastName, Address shippingAddress, String email, String phone) {
+    public Account(String userName, String password, AccountStatus status, String firstName, String lastName, List<Address> shippingAddress, String email, String phone) {
         this.userName = userName;
         this.password = password;
         this.status = status;
@@ -70,11 +72,11 @@ public class Account {
         this.lastName = lastName;
     }
 
-    public Address getShippingAddress() {
+    public List<Address> getShippingAddress() {
         return shippingAddress;
     }
 
-    public void setShippingAddress(Address shippingAddress) {
+    public void setShippingAddress(List<Address> shippingAddress) {
         this.shippingAddress = shippingAddress;
     }
 

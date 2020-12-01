@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AddressRepository extends ReactiveMongoRepository<Address, Integer> {
+    //Integer has to be changed
 }

@@ -13,15 +13,21 @@ public class Member extends Customer{
     public Member() {
 
     }
-    public Member(String id, Account account) {
-        this.id = id;
+    public Member(Account account) {
         this.account = account;
     }
 
-    public Member(ShoppingCart shoppingCart, Order order, String id, Account account) {
+    public Member(ShoppingCart shoppingCart, Order order,Account account) {
         super(shoppingCart, order);
-        this.id = id;
         this.account = account;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public Account getAccount() {

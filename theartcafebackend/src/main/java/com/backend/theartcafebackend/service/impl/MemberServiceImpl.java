@@ -20,6 +20,8 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public Mono<Member> createUser(Member member) {
+        String userEmail = member.getAccount().getEmail();
+        member.getAccount().setUserName(userEmail);
         return memberRepository.save(member);
     }
 

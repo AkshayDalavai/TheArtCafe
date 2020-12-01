@@ -3,6 +3,7 @@
 package com.backend.theartcafebackend.entity;
 
 import com.backend.theartcafebackend.data.AccountStatus;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
@@ -14,6 +15,7 @@ public class Account {
     private AccountStatus status;
     private String firstName;
     private String lastName;
+    @DBRef
     private List<Address> shippingAddress;
     private String email;
     private String phone;

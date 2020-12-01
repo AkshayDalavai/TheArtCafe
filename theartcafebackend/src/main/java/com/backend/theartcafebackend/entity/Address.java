@@ -2,7 +2,13 @@
 
 package com.backend.theartcafebackend.entity;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "Address")
 public class Address {
+    @Id
+    private String id;
     private String streetName;
     private String city;
     private String state;
@@ -12,12 +18,21 @@ public class Address {
     public Address(){
     }
 
-    public Address(String streetName, String city, String state, String country, String zipcode) {
+    public Address(String id, String streetName, String city, String state, String country, String zipcode) {
+        this.id = id;
         this.streetName = streetName;
         this.city = city;
         this.state = state;
         this.country = country;
         this.zipcode = zipcode;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getStreetName() {
@@ -63,7 +78,8 @@ public class Address {
     @Override
     public String toString() {
         return "Address{" +
-                "streetName='" + streetName + '\'' +
+                "Id='" + id + '\'' +
+                ", streetName='" + streetName + '\'' +
                 ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
                 ", country='" + country + '\'' +

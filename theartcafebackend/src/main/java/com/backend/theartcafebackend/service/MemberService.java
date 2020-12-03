@@ -1,12 +1,16 @@
 package com.backend.theartcafebackend.service;
 
 import com.backend.theartcafebackend.entity.Member;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
+
+
+import java.util.List;
 
 public interface MemberService {
+//
+//    Mono<Member> createUser(Member member);
+//    Flux<Member> findAllUsers();
+//    boolean placeOrder();
 
-    Mono<Member> createUser(Member member);
-    Flux<Member> findAllUsers();
-    boolean placeOrder();
+    Member createUser(Member member);
+    List<Member> findAllUsers();
 }

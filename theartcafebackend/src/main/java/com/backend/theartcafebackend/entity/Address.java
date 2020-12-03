@@ -2,87 +2,50 @@
 
 package com.backend.theartcafebackend.entity;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.*;
 
-@Document(collection = "Address")
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="address")
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
 public class Address {
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="account_id",nullable = false)
+    @JsonBackReference
+    private Account account;
+
+    @Column(name="streetname")
     private String streetName;
+
+    @Column(name="city")
     private String city;
+
+    @Column(name="state")
     private String state;
+
+    @Column(name="country")
     private String country;
+
+    @Column(name = "zipcode")
     private String zipcode;
 
-    public Address(){
-    }
-
-    public Address(String streetName, String city, String state, String country, String zipcode) {
+    public Address(Account account, String streetName, String city, String state, String country, String zipcode) {
+        this.account = account;
         this.streetName = streetName;
         this.city = city;
         this.state = state;
         this.country = country;
         this.zipcode = zipcode;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getStreetName() {
-        return streetName;
-    }
-
-    public void setStreetName(String streetName) {
-        this.streetName = streetName;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public String getZipcode() {
-        return zipcode;
-    }
-
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
-    }
-
-    @Override
-    public String toString() {
-        return "Address{" +
-                "Id='" + id + '\'' +
-                ", streetName='" + streetName + '\'' +
-                ", city='" + city + '\'' +
-                ", state='" + state + '\'' +
-                ", country='" + country + '\'' +
-                ", zipcode='" + zipcode + '\'' +
-                '}';
     }
 }

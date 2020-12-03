@@ -4,9 +4,11 @@ import com.backend.theartcafebackend.entity.Member;
 import com.backend.theartcafebackend.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
+
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -20,11 +22,14 @@ public class MemberRestController {
     }
 
     @PostMapping(value = "/createuser")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Mono<Member> createUser(@RequestBody Member member){
-        return memberService.createUser(member);
+    public ResponseEntity<Member> createUser(@RequestBody Member member){
+        Member createdMember = memberService.createUser(member);
+        return new ResponseEntity<>(createdMember,HttpStatus.CREATED);
     }
 
     @GetMapping(value = "/getAllUsers", produces = "application/json")
-    public Flux<Member> getAllUsers(){return memberService.findAllUsers();}
+    public ResponseEntity<List<Member>> getAllUsers(){
+        List<Member> members = memberService.findAllUsers();
+        return new ResponseEntity<>(members,HttpStatus.OK);
+    }
 }

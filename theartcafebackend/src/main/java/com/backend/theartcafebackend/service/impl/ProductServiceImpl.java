@@ -1,40 +1,48 @@
 package com.backend.theartcafebackend.service.impl;
 
+import com.backend.theartcafebackend.entity.ImageURL;
 import com.backend.theartcafebackend.entity.Product;
+import com.backend.theartcafebackend.repository.ImageRepository;
 import com.backend.theartcafebackend.repository.ProductRepository;
 import com.backend.theartcafebackend.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
+
+import java.util.List;
 
 @Service
-public class ProductServiceImpl implements ProductService {
+public class ProductServiceImpl implements ProductService{
     private final ProductRepository productRepository;
+    private final ImageRepository imageRepository;
 
     @Autowired
-    public ProductServiceImpl(ProductRepository productRepository) {
+    public ProductServiceImpl(ProductRepository productRepository, ImageRepository imageRepository) {
         this.productRepository = productRepository;
+        this.imageRepository = imageRepository;
     }
 
     @Override
-    public Mono<Product> addProduct(Product product) {
-
+    public Product addProduct(Product product) {
+        List<ImageURL> imageURL_List = product.getImage_URLs();
+        for(ImageURL imageURL : imageURL_List)
+        {
+            imageURL.setProduct(product);
+        }
         return productRepository.save(product);
     }
 
     @Override
-    public Mono<Product> updateProduct(Product product) {
+    public Product updateProduct(Product product) {
         return null;
     }
 
     @Override
-    public Flux<Product> getAllProduct() {
+    public List<Product> getAllProduct() {
         return productRepository.findAll();
     }
 
     @Override
-    public Mono<Product> getProduct(String name) {
+    public Product getProduct(String name) {
         return null;
     }
 }

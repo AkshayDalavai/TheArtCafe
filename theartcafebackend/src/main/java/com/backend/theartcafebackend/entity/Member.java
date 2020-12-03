@@ -1,47 +1,59 @@
 //*** Begin *** Added by Akshay Dalavai
 package com.backend.theartcafebackend.entity;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.*;
 
-@Document(collection = "Users")
-public class Member extends Customer{
+
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
+@Table(name="member")
+@NoArgsConstructor
+@Getter
+@Setter
+@ToString
+public class Member{
+
     @Id
-    private String id;
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name="id")
+    private int id;
+
+    @Column(name="username")
+    private String username;
+
+    @Column(name="password")
+    private String password;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="account_id")
+    @JsonManagedReference
     private Account account;
 
-    public Member() {
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="shoppingcart_id")
+    private ShoppingCart shoppingCart;
+    //private Order order;
 
-    }
-    public Member(Account account) {
+    @OneToMany(mappedBy = "member",cascade = CascadeType.ALL)
+    private List<Product> sellingProducts;
+
+    public Member(String username, String password, Account account) {
+        this.username = username;
+        this.password = password;
         this.account = account;
     }
 
-    public Member(ShoppingCart shoppingCart, Order order,Account account) {
-        super(shoppingCart, order);
-        this.account = account;
+    @JsonIgnore
+    public String getPassword() {
+        return password;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
-    }
-
-    @Override
-    public String toString() {
-        return "Member{" +
-                "account=" + account +
-                '}';
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

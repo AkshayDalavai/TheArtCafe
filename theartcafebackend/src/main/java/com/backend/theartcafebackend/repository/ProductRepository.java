@@ -1,13 +1,14 @@
 package com.backend.theartcafebackend.repository;
 
 import com.backend.theartcafebackend.entity.Product;
-import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
-import reactor.core.publisher.Mono;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface ProductRepository extends ReactiveMongoRepository<Product,String> {
+import java.util.List;
 
-    Product findByName(String name);
 
-    @Override
-    Mono<Product> findById(String id);
+public interface ProductRepository extends JpaRepository<Product,String>{
+
+    List<Product> findByName(String name);
+
 }

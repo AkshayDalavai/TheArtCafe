@@ -3,112 +3,55 @@
 package com.backend.theartcafebackend.entity;
 
 import com.backend.theartcafebackend.data.AccountStatus;
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.*;
+import net.minidev.json.annotate.JsonIgnore;
 
+
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table(name = "account")
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
 public class Account {
 
-    private String userName;
-    private String password;
-    private AccountStatus status;
+    @Id
+    @Column(name="id")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private int id;
+
+    @Column(name="first_name")
     private String firstName;
+
+    @Column(name = "last_name")
     private String lastName;
-    @DBRef
-    private List<Address> shippingAddress;
-    private String email;
+
+    @Column(name="account_status")
+    private String status;
+
+    @Column(name="phone")
     private String phone;
+    @Column(name="email")
+    private String email;
 
-    public Account() {
-    }
+    @OneToOne(mappedBy="account",cascade = CascadeType.ALL)
+    @JsonBackReference
+    private Member member;
 
-    public Account(String userName, String password, AccountStatus status, String firstName, String lastName, List<Address> shippingAddress, String email, String phone) {
-        this.userName = userName;
-        this.password = password;
-        this.status = status;
+    @OneToMany(mappedBy = "account",cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<Address> shippingAddress;
+
+    public Account(String firstName, String lastName, String status, String phone, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.shippingAddress = shippingAddress;
-        this.email = email;
-        this.phone = phone;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public AccountStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(AccountStatus status) {
         this.status = status;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public List<Address> getShippingAddress() {
-        return shippingAddress;
-    }
-
-    public void setShippingAddress(List<Address> shippingAddress) {
-        this.shippingAddress = shippingAddress;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    @Override
-    public String toString() {
-        return "Account{" +
-                "userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
-                ", status=" + status +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", shippingAddress=" + shippingAddress +
-                ", email='" + email + '\'' +
-                ", phone='" + phone + '\'' +
-                '}';
+        this.email = email;
     }
 }

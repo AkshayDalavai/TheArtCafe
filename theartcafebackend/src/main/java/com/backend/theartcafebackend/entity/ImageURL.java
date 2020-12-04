@@ -19,11 +19,6 @@ public class ImageURL {
     @Column(name="url")
     private String url;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "product_id")
-    @JsonBackReference
-    private Product product;
-
     public ImageURL(String url) {
         this.url = url;
     }

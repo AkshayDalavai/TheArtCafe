@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductServiceImpl implements ProductService{
@@ -23,11 +24,6 @@ public class ProductServiceImpl implements ProductService{
 
     @Override
     public Product addProduct(Product product) {
-        List<ImageURL> imageURL_List = product.getImage_URLs();
-        for(ImageURL imageURL : imageURL_List)
-        {
-            imageURL.setProduct(product);
-        }
         return productRepository.save(product);
     }
 

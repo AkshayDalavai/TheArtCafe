@@ -15,7 +15,6 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString
 public class Member{
 
     @Id
@@ -48,12 +47,30 @@ public class Member{
         this.account = account;
     }
 
-    @JsonIgnore
+    public Member(String username, String password, Account account, ShoppingCart shoppingCart) {
+        this.username = username;
+        this.password = password;
+        this.account = account;
+        this.shoppingCart = shoppingCart;
+    }
+
     public String getPassword() {
         return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "Member{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", account=" + account +
+                ", shoppingCart=" + shoppingCart +
+                ", sellingProducts=" + sellingProducts +
+                '}';
     }
 }
